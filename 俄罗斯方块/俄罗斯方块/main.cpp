@@ -323,8 +323,6 @@ public:
 
  squre::squre()
 {
-
-
 	color = 0x01;
 	LorR = n = cr = _line = 0;
 	Dow = full = 1;
@@ -340,7 +338,7 @@ public:
 }
 
 
-//7ÖÖ×´Ì¬·½¿é
+//7ÖÖ×´Ì¬·½¿é!
 int squre::squr[7][4] = {
 	1,3,5,7,//I
 	2,4,5,7,//Z
@@ -500,6 +498,6 @@ void dis_conctrl()
 	gotoxy(14, 16);
 	cout << "¡ôÂÌ¡¢ºìÉ«¡¢»Æ¡¢°×";
 	gotoxy(13, 19);
-	cout << "¡öBy:flowind 18.01.15";
+	cout << "¡ö By	:	Mints	18.01.31 ¡ö";
 
 }
