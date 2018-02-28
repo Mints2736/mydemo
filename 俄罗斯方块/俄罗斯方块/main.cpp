@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cstring>
 #include <iomanip>
 #include <time.h>
@@ -8,9 +8,9 @@
 using namespace std;
 
 HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-void init_console();//³õÊ¼»¯¿ØÖÆÌ¨
-void gotoxy(int, int);//×ø±ê
-void map();//µØÍ¼
+void init_console();//åˆå§‹åŒ–æ§åˆ¶å°
+void gotoxy(int, int);//åæ ‡
+void map();//åœ°å›¾
 void gameover();
 void dis_conctrl();
 bool gameOver = false;
@@ -33,7 +33,7 @@ public:
 
 
 	friend void KeyConctrl(squre &s, int key);
-	//Éú³ÉÒ»ÖÖ·½¿é±£´æºÃ×ø±ê
+	//ç”Ÿæˆä¸€ç§æ–¹å—ä¿å­˜å¥½åæ ‡
 	void Oput_sqr()
 	{
 		color = group_color[cr][rand() % 4];
@@ -46,7 +46,7 @@ public:
 		}
 	}
 
-	//ÒÆ¶¯
+	//ç§»åŠ¨
 	void move()
 	{
 		for (int i = 0; i<4; i++)
@@ -60,7 +60,7 @@ public:
 		cls();
 		dis();
 	}
-	//ÏÂÂä
+	//ä¸‹è½
 	bool down()
 	{
 		if (check())return true;
@@ -84,14 +84,14 @@ public:
 
 			check_line();
 			cls_next();
-			//°ÑnexµÄ¸øa[i]
+			//æŠŠnexçš„ç»™a[i]
 			for (int i = 0; i<4; i++)
 			{
 				a[i].x = bgn_x + nex[i].x;
 				a[i].y = bgn_y + nex[i].y;
 				b[i] = a[i];
 			}
-			//ÖØĞÂÉú³É¸ø nex
+			//é‡æ–°ç”Ÿæˆç»™ nex
 			nexteris();
 		}
 		else
@@ -100,7 +100,7 @@ public:
 		}
 		return false;
 	}
-	//Ğı×ªÏµÍ³
+	//æ—‹è½¬ç³»ç»Ÿ
 	void rotate(bool cw)
 	{
 		cls();
@@ -120,12 +120,12 @@ public:
 		{
 			int x = a[i].x;
 			int y = a[i].y;
-			if (cw)//ÄæÊ±Õë
+			if (cw)//é€†æ—¶é’ˆ
 			{
 				a[i].x = (y - p.y) + p.x;
 				a[i].y = (p.x - x) + p.y;
 			}
-			else//Ë³Ê±Õë
+			else//é¡ºæ—¶é’ˆ
 			{
 				a[i].x = (p.x - y) + p.y;
 				a[i].y = (p.y + x) - p.x;
@@ -209,7 +209,7 @@ public:
 		dis();
 	}
 
-	//Åö×²¼ì²â
+	//ç¢°æ’æ£€æµ‹
 	bool check()
 	{
 		for (int i = 0; i < 4; i++)
@@ -220,12 +220,12 @@ public:
 		return false;
 	}
 
-	//ÑÕÉ«ÉèÖÃ
+	//é¢œè‰²è®¾ç½®
 	void chg_color(WORD col)
 	{
 		SetConsoleTextAttribute(hOut, col);
 	}
-	//ÏÔÊ¾Ö¸¶¨·½¿é
+	//æ˜¾ç¤ºæŒ‡å®šæ–¹å—
 	void dis()
 	{
 		for (int i = 0; i<4; i++)
@@ -235,12 +235,12 @@ public:
 			{
 				gotoxy(a[i].x, a[i].y);
 				chg_color(color);
-				cout << "¡ö";
+				cout << "â– ";
 			}
 		}
 
 	}
-	//Çå³ı·½¿é
+	//æ¸…é™¤æ–¹å—
 	void cls()
 	{
 		for (int i = 0; i<4; i++)
@@ -252,7 +252,7 @@ public:
 			}
 		}
 	}
-	//ÏûĞĞ
+	//æ¶ˆè¡Œ
 	void check_line()
 	{
 		int h = 19; 
@@ -271,7 +271,7 @@ public:
 				if (date[i][j])
 				{
 					chg_color(color_date[i][j]);
-					cout << "¡ö";
+					cout << "â– ";
 				}
 				else cout << "  ";
 				date[h][j] = date[i][j];
@@ -287,7 +287,7 @@ public:
 		}
 
 	}
-	//ÏÔÊ¾»ı·Ö
+	//æ˜¾ç¤ºç§¯åˆ†
 	void dis_score()
 	{
 		gotoxy(2, 2);
@@ -296,7 +296,7 @@ public:
 	}
 
 	//.........................//
-	//ÏÂÒ»·½¿éÌáÊ¾
+	//ä¸‹ä¸€æ–¹å—æç¤º
 	void nexteris()
 	{
 		Oput_sqr();
@@ -304,10 +304,10 @@ public:
 		{
 			gotoxy(nex[i].x + 7, nex[i].y + 1);
 			chg_color(0x07);
-			cout << "¡ö";
+			cout << "â– ";
 		}
 	}
-	//Çå³ıÏÂÒ»·½¿é
+	//æ¸…é™¤ä¸‹ä¸€æ–¹å—
 	void cls_next()
 	{
 		for (int j = 0; j<2; j++)
@@ -338,7 +338,7 @@ public:
 }
 
 
-//7ÖÖ×´Ì¬·½¿é!
+//7ç§çŠ¶æ€æ–¹å—!
 int squre::squr[7][4] = {
 	1,3,5,7,//I
 	2,4,5,7,//Z
@@ -432,37 +432,37 @@ void gotoxy(int x, int y)
 }
 void map()
 {
-	//ÉÏ±ß¿ò
+	//ä¸Šè¾¹æ¡†
 	gotoxy(0, 0);
 	for (int i = 0; i < 12; i++)
 	{
-		cout << "¡õ";
+		cout << "â–¡";
 	}
 	gotoxy(1, 3);
 	for (int i = 0; i < 10; i++)
 	{
-		cout << "¡õ";
+		cout << "â–¡";
 	}
 
-	//×óÓÒ±ß¿ò
+	//å·¦å³è¾¹æ¡†
 	for (int i = 0; i < 25; i++)
 	{
 		gotoxy(0, i);
-		cout << "¡õ";
+		cout << "â–¡";
 		gotoxy(11, i);
-		cout << "¡õ";
+		cout << "â–¡";
 	}
-	//ÖĞ¸ôÏß
+	//ä¸­éš”çº¿
 	for (int i = 1; i < 3; i++)
 	{
 		gotoxy(6, i);
-		cout << "¡õ";
+		cout << "â–¡";
 	}
-	//ÏÂ±ß¿ò
+	//ä¸‹è¾¹æ¡†
 	gotoxy(0, 24);
 	for (int i = 0; i < 12; i++)
 	{
-		cout << "¡õ";
+		cout << "â–¡";
 	}
 	//score
 	SetConsoleTextAttribute(hOut, 0x0f);
@@ -473,31 +473,31 @@ void gameover()
 	SetConsoleTextAttribute(hOut, 0xf0);
 	gotoxy(3, 14); cout << " GAME OVER! ";
 }
-//¿ØÖÆËµÃ÷
+//æ§åˆ¶è¯´æ˜
 void dis_conctrl()
 {
 	SetConsoleTextAttribute(hOut, 0xB);
 	gotoxy(13, 3);
-	cout << "¡ö²Ù×÷ËµÃ÷£º";
+	cout << "â– æ“ä½œè¯´æ˜ï¼š";
 	gotoxy(15, 5);
-	cout << "¡õÏò×óÒÆ¶¯£º¡û A";
+	cout << "â–¡å‘å·¦ç§»åŠ¨ï¼šâ† A";
 	gotoxy(15, 6);
-	cout << "¡õÏòÓÒÒÆ¶¯£º¡ú D";
+	cout << "â–¡å‘å³ç§»åŠ¨ï¼šâ†’ D";
 	gotoxy(15, 7);
-	cout << "¡õ¿ìËÙÏÂÂä£º¡ı S";
+	cout << "â–¡å¿«é€Ÿä¸‹è½ï¼šâ†“ S";
 	gotoxy(15, 8);
-	cout << "¡õË³Ê±Õë×ª£º¡ü W";
+	cout << "â–¡é¡ºæ—¶é’ˆè½¬ï¼šâ†‘ W";
 	gotoxy(15, 9);
-	cout << "¡õÄæÊ±Õë×ª£º0  Q";
+	cout << "â–¡é€†æ—¶é’ˆè½¬ï¼š0  Q";
 	gotoxy(15, 10);
-	cout << "¡õ±ä»»ÑÕÉ«£º+";
+	cout << "â–¡å˜æ¢é¢œè‰²ï¼š+";
 	gotoxy(13, 13);
-	cout << "¡ñÔ¤ÖÃÓĞÁ½×éÑÕÉ«£º";
+	cout << "â—é¢„ç½®æœ‰ä¸¤ç»„é¢œè‰²ï¼š";
 	gotoxy(14, 15);
-	cout << "¡ôÀ¶¡¢Ç³ÂÌ¡¢×Ï¡¢°×";
+	cout << "â—†è“ã€æµ…ç»¿ã€ç´«ã€ç™½";
 	gotoxy(14, 16);
-	cout << "¡ôÂÌ¡¢ºìÉ«¡¢»Æ¡¢°×";
+	cout << "â—†ç»¿ã€çº¢è‰²ã€é»„ã€ç™½";
 	gotoxy(13, 19);
-	cout << "¡ö By	:	Mints	18.01.31 ¡ö";
+	cout << "â–  By	:	Mints	18.01.31 â– ";
 
 }
