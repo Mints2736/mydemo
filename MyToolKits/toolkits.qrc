@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/config.png</file>
+        <file>images/query.png</file>
+        <file>images/update.png</file>
+        <file>images/floatconvertion.png</file>
+        <file>images/tools.png</file>
+        <file>images/close.png</file>
+    </qresource>
+</RCC>
